@@ -1,0 +1,93 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background: #f4f4f4;
+  text-align: center;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.warning {
+  background: #ffe1e1;
+  color: #b00020;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.success {
+  background: #dff8e7;
+  color: #087c3e;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 180px 150px 120px;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+input,
+select,
+button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #111827;
+  color: white;
+  cursor: pointer;
+}
+
+.activity {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-left: 6px solid #ccc;
+  background: #f9f9f9;
+}
+
+.activity.sport {
+  border-left-color: #f97316;
+}
+
+.activity.water {
+  border-left-color: #0ea5e9;
+}
+
+.activity span {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+small {
+  color: #666;
+}

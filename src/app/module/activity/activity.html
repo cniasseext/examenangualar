@@ -1,0 +1,80 @@
+<main class="container">
+  <h1>Fit Track Pro</h1>
+
+  <section class="dashboard">
+    <div class="card">
+      <h3>Calories brûlées</h3>
+      <p>{{ totalCalories() }} kcal</p>
+    </div>
+
+    <div class="card">
+      <h3>Eau consommée</h3>
+      <p>{{ totalWater() }} ml</p>
+    </div>
+
+    <div class="card">
+      <h3>Bilan calorique</h3>
+      <p>{{ remainingCalories() }} kcal restantes</p>
+    </div>
+  </section>
+
+  @if (healthGoalReached()) {
+    <div class="success">
+      Objectif Santé Atteint
+    </div>
+  } @else if (dehydrationWarning()) {
+    <div class="warning">
+      Attention : risque de déshydratation. Buvez plus d'eau.
+    </div>
+  }
+
+  <form class="form" (ngSubmit)="addActivity()">
+    <input
+      type="text"
+      placeholder="Nom de l'activité"
+      [ngModel]="activityName()"
+      (ngModelChange)="activityName.set($event)"
+      name="name"
+    />
+
+    <select
+      [ngModel]="activityType()"
+      (ngModelChange)="activityType.set($event)"
+      name="type"
+    >
+      <option value="SPORT">Sport</option>
+      <option value="HYDRATATION">Hydratation</option>
+    </select>
+
+    <input
+      type="number"
+      placeholder="Valeur"
+      [ngModel]="activityValue()"
+      (ngModelChange)="activityValue.set(+$event)"
+      name="value"
+    />
+
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <section class="journal">
+    <h2>Journal du jour</h2>
+
+    @for (activity of activities(); track activity.id) {
+      <div class="activity" [class.sport]="activity.type === 'SPORT'" [class.water]="activity.type === 'HYDRATATION'">
+        <strong>{{ activity.name }}</strong>
+        <span>{{ activity.type }}</span>
+
+        @if (activity.type === 'SPORT') {
+          <p>{{ activity.value }} kcal</p>
+        } @else {
+          <p>{{ activity.value }} ml</p>
+        }
+
+        <small>{{ activity.createdAt }}</small>
+      </div>
+    } @empty {
+      <p>Aucune activité enregistrée pour le moment.</p>
+    }
+  </section>
+</main>
